@@ -1,0 +1,30 @@
+<html>
+<body>
+
+    <script>
+        base_url = "http://localhost:8000"
+        function sendMessage() {
+            const userMessage = document.getElementById("user-input").value;
+            fetch(`${base_url}/chat`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const chatBox = document.getElementById("chat-box");
+                chatBox.innerHTML += `<div>User: ${userMessage}</div>`;
+                chatBox.innerHTML += `<div>Bot: ${data.response}</div>`;
+            });
+        }
+    </script>
+    <h1>BFL Chatbot</h1>
+    <p>Welcome to the BFL Chatbot interface.</p>
+    <div id="chat-box" style="border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll;">
+        <!-- Chat messages will appear here -->
+</body>
+
+
+</html>
