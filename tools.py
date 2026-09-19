@@ -1,11 +1,12 @@
 import json
 import uuid
+from pathlib import Path
 
 from datetime import datetime, date
 from langchain_core.tools import tool
 
 
-DB_PATH =  "18th_july_wills_ai_engineering\\projects\\BFL_CHATBOT\\bajaj_db.json"
+DB_PATH = Path(__file__).with_name("bajaj_db.json")
 
 with open(DB_PATH) as f:
     db = json.load(f)
